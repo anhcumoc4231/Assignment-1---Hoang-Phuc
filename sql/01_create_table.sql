@@ -1,0 +1,8 @@
+-- Create in your own Db2 schema. Import data/cardio_train_raw.csv using delimiter ;.
+-- AGE remains in days; derive years in SELECT to avoid converting twice.
+CREATE TABLE CARDIO_TRAIN (
+ ID INTEGER NOT NULL PRIMARY KEY, AGE INTEGER, GENDER SMALLINT,
+ HEIGHT INTEGER, WEIGHT DOUBLE, AP_HI INTEGER, AP_LO INTEGER,
+ CHOLESTEROL SMALLINT, GLUC SMALLINT, SMOKE SMALLINT,
+ ALCO SMALLINT, ACTIVE SMALLINT, CARDIO SMALLINT
+);
