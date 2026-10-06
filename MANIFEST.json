@@ -31,8 +31,8 @@
   },
   {
     "file": "Bao_cao_ADY201m.html",
-    "bytes": 910602,
-    "sha256": "7e73dffc505bb0ae29644612c7e6be4d6328307a3740687ee65723a546a90908"
+    "bytes": 910822,
+    "sha256": "c58464a051c83207ee9dc358156bcd64ab9507f7328bf9f016a3b1abbaacf838"
   },
   {
     "file": "cardio_utils.py",
@@ -41,8 +41,8 @@
   },
   {
     "file": "README.md",
-    "bytes": 7737,
-    "sha256": "8e9e0020b820acd6a1abdeff27cfbfa954f15d2b2b9300e7e64f36dd434b66ba"
+    "bytes": 8057,
+    "sha256": "24994fc76798ccc1f74fac3882b34cd0af61ae54de692f5739f9a473ff1dd98c"
   },
   {
     "file": "requirements.txt",
@@ -68,6 +68,11 @@
     "file": "data/extraction_audit.json",
     "bytes": 7289,
     "sha256": "269ccc7e6775a2ee8ffa07f26a2518d350088c5fd86b29c643b14c2bbb3e8f47"
+  },
+  {
+    "file": "data/README.md",
+    "bytes": 390,
+    "sha256": "f48b36d8fefdaa599425708c05b4f4e399330f4fd91b955aac8841436acbc45e"
   },
   {
     "file": "figures/01_target_distribution.png",
@@ -113,6 +118,11 @@
     "file": "figures/09_feature_importance.png",
     "bytes": 39434,
     "sha256": "f3dfeb16cc192674d0f4f40b5864f01011fc0d3983bdb0536831a9e2f9f6b334"
+  },
+  {
+    "file": "figures/README.md",
+    "bytes": 388,
+    "sha256": "efedca1a72d772984626e8994601a6ad1bd7d951463bc087c84c2100c84e30b1"
   },
   {
     "file": "results/cardio_classifier.joblib",
@@ -175,14 +185,19 @@
     "sha256": "45979b08d0248852e8a0b2efacc4458caa422a17bd907e2dd7ff030c104c57e4"
   },
   {
+    "file": "results/README.md",
+    "bytes": 396,
+    "sha256": "26e443fd5e866ddb024debfab85fcbf3d03ad77e44456ce3b498647edafc60eb"
+  },
+  {
     "file": "results/statistical_tests.csv",
     "bytes": 404,
     "sha256": "c8b051cd6976e6c911f62fbdd3008848bb2d0d6f7bc0d8480f24df83c62e3d60"
   },
   {
     "file": "results/summary.json",
-    "bytes": 1216,
-    "sha256": "d941e699d943cd26619a0a6d58d7d585bd12c74295dcadd9b9bdc6d3a50c62e3"
+    "bytes": 1422,
+    "sha256": "813847b2d844f5198845206d1db5c2951f77c27621a2745fe1690c49be0dde76"
   },
   {
     "file": "results/test_ids.csv",
@@ -213,5 +228,10 @@
     "file": "sql/queries.json",
     "bytes": 2230,
     "sha256": "8b852ae2c6aecdc05355a25759786693ebbb170f9fd4fd6254a3f3f82520a79b"
+  },
+  {
+    "file": "sql/README.md",
+    "bytes": 358,
+    "sha256": "f8ef1ea72d2e06e8a9736889f300988e765ac30934143180b5dc8913b268497d"
   }
 ]

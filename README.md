@@ -4,8 +4,9 @@
 - Đã khôi phục và kiểm tra CSV: 70.000 dòng, 13 cột, 34.979 hồ sơ mắc bệnh.
 - Đã chạy 13 SELECT bằng SQLite local. Đây không phải kết quả chạy IBM Db2 Cloud.
 - Đã chạy toàn bộ phân tích, biểu đồ, kiểm định, OLS, 7 mô hình mẫu, baseline và Gradient Boosting tinh chỉnh.
-- Chưa chạy IBM Db2 Cloud/Watson Studio: người dùng đã tạo tài khoản IBM, nhưng phiên đăng nhập chưa kết nối.
-- Chưa tải GitHub: trình duyệt Chrome chưa kết nối với phiên làm việc.
+- Chưa chạy IBM Db2 Cloud/Watson Studio: tài khoản dừng tại bước Finish setting up your account / Upgrade account rồi bị đăng xuất; người dùng chưa nâng cấp gói.
+- Đã tải bài lên GitHub: https://github.com/anhcumoc4231/ADY201m-Cardio-Assignment (repository riêng tư).
+- Để đáp ứng phần Cloud của đề, cần tài khoản IBM đã kích hoạt hoặc môi trường IBM do trường cung cấp, rồi cập nhật notebook có kết quả chạy Cloud.
 
 ## Các file chính
 - `01_Db2_SQL_Python.ipynb`: DDL/hướng dẫn Db2, 10 truy vấn API và 3 truy vấn bổ sung, xuất CSV, đóng kết nối. Đã chạy chế độ SQLite.
@@ -73,7 +74,7 @@
 | RidgeClassifier và các mô hình mẫu | Notebook 02 | Đã chạy |
 | Tinh chỉnh mô hình | GridSearchCV và results/grid_search.csv | Đã chạy |
 | Thực hiện lại Watson Studio | Hướng dẫn trên | Chưa chạy |
-| Upload GitHub | Hướng dẫn trên | Chưa tải |
+| Upload GitHub | anhcumoc4231/ADY201m-Cardio-Assignment | Đã tải, repository riêng tư |
 
 ## Nguồn
 - Đề ADY201m và PDF cardio_train_raw do người dùng cung cấp.
