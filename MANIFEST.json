@@ -1,0 +1,217 @@
+[
+  {
+    "file": ".env.example",
+    "bytes": 189,
+    "sha256": "29bd7d53da99728ddb13d84e7455c576d8640f93c4d104b21000a1ee2e1fa0b3"
+  },
+  {
+    "file": ".gitignore",
+    "bytes": 86,
+    "sha256": "30fe082f32ed868647c02bf261993b618c3b657df37ce5f2536d75bf4faa13f8"
+  },
+  {
+    "file": "01_Db2_SQL_Python.html",
+    "bytes": 31842,
+    "sha256": "ea088138662d63715f61bcdfee130349cd3cbc14bdfe46d177b4149b38ea2920"
+  },
+  {
+    "file": "01_Db2_SQL_Python.ipynb",
+    "bytes": 51764,
+    "sha256": "9ba7146def57f50dfdba475997ecc6c6f1734121cbbc116fbef178ad56095fc8"
+  },
+  {
+    "file": "02_Cardio_Analysis_ML.html",
+    "bytes": 1271789,
+    "sha256": "8582ba14e5a52061b09f67c32831f3f07814bf40f27cd5dd00a2a43965360993"
+  },
+  {
+    "file": "02_Cardio_Analysis_ML.ipynb",
+    "bytes": 1289344,
+    "sha256": "85e9d8de0d0efec2d78fc3eea95acd4e610d201f678e2cc56c0655b550191a92"
+  },
+  {
+    "file": "Bao_cao_ADY201m.html",
+    "bytes": 910602,
+    "sha256": "7e73dffc505bb0ae29644612c7e6be4d6328307a3740687ee65723a546a90908"
+  },
+  {
+    "file": "cardio_utils.py",
+    "bytes": 833,
+    "sha256": "3b9ec47431067bae24ca759808c7d54de170429233a9c277f741ed451f404059"
+  },
+  {
+    "file": "README.md",
+    "bytes": 7737,
+    "sha256": "8e9e0020b820acd6a1abdeff27cfbfa954f15d2b2b9300e7e64f36dd434b66ba"
+  },
+  {
+    "file": "requirements.txt",
+    "bytes": 280,
+    "sha256": "5c54537d81f9626a79fa504e9018f44cfee1c4e852c34e54254df2fad013ef9f"
+  },
+  {
+    "file": "data/cardio_train_clean.csv",
+    "bytes": 2800584,
+    "sha256": "0134c1d55ddde3cd593fa515aa9b7168e505be7364cb750544f62f16aeb8a966"
+  },
+  {
+    "file": "data/CARDIO_TRAIN_export.csv",
+    "bytes": 3011525,
+    "sha256": "2423cc5534fdc70887471778fc92b673ebb53d0d5188537b9029643b8a10e275"
+  },
+  {
+    "file": "data/cardio_train_raw.csv",
+    "bytes": 3011525,
+    "sha256": "bdeea79d8f231af1df97bddef9564f3d11f86f1932901d04cbedd7d346138c60"
+  },
+  {
+    "file": "data/extraction_audit.json",
+    "bytes": 7289,
+    "sha256": "269ccc7e6775a2ee8ffa07f26a2518d350088c5fd86b29c643b14c2bbb3e8f47"
+  },
+  {
+    "file": "figures/01_target_distribution.png",
+    "bytes": 30849,
+    "sha256": "738e5aba14dfd16883ef5a12fb474909979cb1a7f5fa9c9d77cb6ec2b58f9189"
+  },
+  {
+    "file": "figures/02_correlation_raw.png",
+    "bytes": 203623,
+    "sha256": "06c9c0a1f4b9aadcd2e7be9b78fe4f0d7fca5427582e97f3fe58f8e328a5f166"
+  },
+  {
+    "file": "figures/03_histograms.png",
+    "bytes": 165232,
+    "sha256": "7c30eef404bf673909377762a27caded9c4d6f4a3dd2ac54434d570c65bc3c8f"
+  },
+  {
+    "file": "figures/04_regression_relationships.png",
+    "bytes": 94728,
+    "sha256": "12df4ff4ce55226e693a72b3761997dbf8faec3a07272775ccec0e15e5cc1ba2"
+  },
+  {
+    "file": "figures/05_boxplots_before_after.png",
+    "bytes": 72190,
+    "sha256": "1e8953da885386dbc611ded421c65f667cb9bc7fe34f187feabc55f2926af01d"
+  },
+  {
+    "file": "figures/06_correlation_clean.png",
+    "bytes": 220204,
+    "sha256": "165c369c4b34d1c192445f3a3878245a6fc95dc0721e4a5c8714b834690f93e6"
+  },
+  {
+    "file": "figures/07_model_comparison.png",
+    "bytes": 51895,
+    "sha256": "986fd3cd8b57a2418046beee0be28fa800991b5fadab352a129b8e1a52b3e97f"
+  },
+  {
+    "file": "figures/08_confusion_matrix.png",
+    "bytes": 42677,
+    "sha256": "832d0df5867d83cafcf99b2bb4e18a97399240ca25fcad037167eb05b5061251"
+  },
+  {
+    "file": "figures/09_feature_importance.png",
+    "bytes": 39434,
+    "sha256": "f3dfeb16cc192674d0f4f40b5864f01011fc0d3983bdb0536831a9e2f9f6b334"
+  },
+  {
+    "file": "results/cardio_classifier.joblib",
+    "bytes": 123124,
+    "sha256": "56c28f2d065f9a9a035e2749bba5495725fd283eae73ff3bfa8f86aff5bd8537"
+  },
+  {
+    "file": "results/data_quality.json",
+    "bytes": 183,
+    "sha256": "ac94421b2d4c69ebf1c5c206b9256e6377296440675d19d2224e20b394b3e1ce"
+  },
+  {
+    "file": "results/db_execution_status.json",
+    "bytes": 110,
+    "sha256": "3ef1a43f736b7093e1297febaa4e77cb9d0388d93e3be14008977d067f571126"
+  },
+  {
+    "file": "results/descriptive_statistics.csv",
+    "bytes": 1018,
+    "sha256": "e5d9ace0c8b08e9e8172d5a9b1ce6981f7b7ce5ef5e5e49cfe04aac4cb951bd4"
+  },
+  {
+    "file": "results/environment_versions.csv",
+    "bytes": 133,
+    "sha256": "c371ab7890b8eb2666d7090a4c5323218940f286eeff048d930f02303adba4f2"
+  },
+  {
+    "file": "results/feature_importance.csv",
+    "bytes": 333,
+    "sha256": "921c41f594cad3ddba2a8b2356fbba15e5b5e43027fcb4cbc60818022c767f97"
+  },
+  {
+    "file": "results/grid_search.csv",
+    "bytes": 1074,
+    "sha256": "646bf369c2374c93062b002d85676013c3a11f866a9145f28afec30a25880785"
+  },
+  {
+    "file": "results/iqr_limits.csv",
+    "bytes": 122,
+    "sha256": "28728320fe09ecf64fe7cb061f21d1cdb705fcd9efa9dd5bed8bc474cc81885a"
+  },
+  {
+    "file": "results/model_comparison.csv",
+    "bytes": 1163,
+    "sha256": "8224371bd29fd5ddfce5a19a414754ab782af115e780e29160daa76ac7eb848e"
+  },
+  {
+    "file": "results/ols_coefficients.csv",
+    "bytes": 583,
+    "sha256": "0e2a71bf8e65f8a9b4ecea81d08f115e72b66d9fa6bc6c885790bb79401c81c3"
+  },
+  {
+    "file": "results/ols_summary.txt",
+    "bytes": 2812,
+    "sha256": "6bbe56721003fc5ff412c1bc1637df57b39da4cbb968870bcf6b20c638f49895"
+  },
+  {
+    "file": "results/query_summary.csv",
+    "bytes": 935,
+    "sha256": "45979b08d0248852e8a0b2efacc4458caa422a17bd907e2dd7ff030c104c57e4"
+  },
+  {
+    "file": "results/statistical_tests.csv",
+    "bytes": 404,
+    "sha256": "c8b051cd6976e6c911f62fbdd3008848bb2d0d6f7bc0d8480f24df83c62e3d60"
+  },
+  {
+    "file": "results/summary.json",
+    "bytes": 1216,
+    "sha256": "d941e699d943cd26619a0a6d58d7d585bd12c74295dcadd9b9bdc6d3a50c62e3"
+  },
+  {
+    "file": "results/test_ids.csv",
+    "bytes": 249697,
+    "sha256": "907a8ab6f7613281d1ec68ee65f7731a1043651f1f403a736e9154172f35c7e8"
+  },
+  {
+    "file": "results/test_predictions.csv",
+    "bytes": 632193,
+    "sha256": "7d4adc91f435c2e3e7ea4a6f3d393710781070133fe3654b4b0cb4bfd3cdd5a5"
+  },
+  {
+    "file": "results/train_ids.csv",
+    "bytes": 631522,
+    "sha256": "7ffcd7e733b6476aafbd0cac84d4c6035ea7029b29f328d9482d5cb33e83c31a"
+  },
+  {
+    "file": "sql/01_create_table.sql",
+    "bytes": 428,
+    "sha256": "7e7fceef04ee05fc27b89097483b1884f824d5201a5a106dae06aeceb8500956"
+  },
+  {
+    "file": "sql/02_queries.sql",
+    "bytes": 1898,
+    "sha256": "baf7ca97b3829c88143347157b13633dc4cf4bb6593b1339d0e0c875a3de8573"
+  },
+  {
+    "file": "sql/queries.json",
+    "bytes": 2230,
+    "sha256": "8b852ae2c6aecdc05355a25759786693ebbb170f9fd4fd6254a3f3f82520a79b"
+  }
+]
