@@ -6,7 +6,9 @@ Repository trình bày bài tập phân tích dữ liệu bệnh tim mạch thu�
 
 Quy trình phân tích và huấn luyện đã được thực thi trên môi trường cục bộ. Hai notebook lưu mã nguồn, kết quả truy vấn, bảng thống kê và biểu đồ để phục vụ đánh giá và tái lập.
 
-Các truy vấn SELECT đã được kiểm chứng bằng SQLite. Mã kết nối và truy vấn IBM Db2 được cung cấp trong notebook 01, nhưng **chưa được thực thi trên IBM Db2 Cloud**. Phần thực hiện lại trên Watson Studio cũng **chưa hoàn tất**, do môi trường IBM Cloud chưa được kích hoạt đầy đủ. Các kết quả cục bộ không được xem là minh chứng thực thi trên IBM Cloud.
+**Phương án thay thế đã được giảng viên chấp nhận:** sử dụng SQLite để lưu trữ, truy vấn dữ liệu và thực hiện notebook trên môi trường cục bộ. Cơ sở dữ liệu được lưu tại `data/cardio_train.sqlite`, tiếp tục tồn tại sau khi đóng kết nối hoặc kết thúc phiên notebook.
+
+Notebook 01 đã thực thi 13 SELECT trên cơ sở dữ liệu này, xuất CSV và kiểm tra dữ liệu sau khi mở lại tệp. Nhánh IBM Db2 và hướng dẫn Watson Studio được giữ để tham khảo tùy chọn; các kết quả đính kèm phản ánh thực thi cục bộ, không phải thực thi trên IBM Cloud.
 
 ## Dữ liệu
 
@@ -24,6 +26,7 @@ Dữ liệu được khôi phục từ tài liệu PDF của bộ dữ liệu `c
 
 | Tệp dữ liệu | Nội dung |
 |---|---|
+| `data/cardio_train.sqlite` | Cơ sở dữ liệu SQLite lưu bền vững; bảng `CARDIO_TRAIN` gồm 70.000 hồ sơ, có khóa chính `ID`. |
 | `data/cardio_train_raw.csv` | Dữ liệu gốc; phân cách bằng dấu chấm phẩy; tuổi tính bằng ngày. |
 | `data/CARDIO_TRAIN_export.csv` | Dữ liệu xuất từ truy vấn SQL cục bộ; phân cách bằng dấu phẩy; tuổi tính bằng ngày. |
 | `data/cardio_train_clean.csv` | Dữ liệu phục vụ EDA và thống kê sau xử lý IQR; tuổi tính bằng năm. |
@@ -41,9 +44,10 @@ Notebook phân tích đọc dữ liệu **gốc**. Tệp đã làm sạch không
 ├── 02_Cardio_Analysis_ML.html    # Bản xem notebook phân tích
 ├── Bao_cao_ADY201m.html          # Báo cáo tiếng Việt, tự chứa biểu đồ
 ├── cardio_utils.py              # Bộ xử lý IQR dùng trong pipeline
+├── sqlite_storage.py            # Tạo, mở lại và kiểm tra cơ sở dữ liệu SQLite
 ├── requirements.txt            # Các thư viện và phiên bản môi trường
-├── data/                       # Dữ liệu gốc, dữ liệu xuất và dữ liệu EDA
-├── sql/                        # DDL Db2 và 13 truy vấn SELECT
+├── data/                       # Cơ sở dữ liệu SQLite, CSV và kiểm tra nguồn
+├── sql/                        # DDL và 13 SELECT cho SQLite; bản Db2 tham khảo
 ├── figures/                    # Chín biểu đồ từ notebook phân tích
 ├── results/                    # Thống kê, mô hình và kết quả đánh giá
 └── MANIFEST.json                # Kích thước và SHA-256 của các tệp
@@ -54,12 +58,13 @@ Báo cáo HTML và các bản HTML của notebook có thể mở trực tiếp b
 ## Phương pháp
 
 1. Kiểm tra cấu trúc dữ liệu, miền giá trị và phân bố nhãn.
-2. Thực hiện 13 truy vấn SELECT; Q01–Q10 tương ứng 10 yêu cầu truy vấn bằng API Python trong đề bài. Các nhóm giới hạn 10 hồ sơ sử dụng `ORDER BY` để bảo đảm kết quả xác định.
-3. Phân tích khám phá bằng thống kê mô tả, histogram, heatmap, regplot và boxplot.
-4. Xử lý ngoại lệ huyết áp tâm thu và tâm trương bằng chặn IQR; thực hiện ANOVA, Levene/T-test, Pearson, Chi-square và OLS theo nội dung đề bài.
-5. Chia dữ liệu thành 49.000 hồ sơ huấn luyện và 21.000 hồ sơ kiểm tra, phân tầng theo nhãn với `random_state = 42`.
-6. So sánh RidgeClassifier, AdaBoost, Gradient Boosting, Random Forest, Bagging KNN, Extra Trees và Stacking, cùng mô hình dự đoán lớp phổ biến làm mốc so sánh.
-7. Tinh chỉnh Gradient Boosting bằng `GridSearchCV` với 8 tổ hợp tham số và 3 fold trên tập huấn luyện.
+2. Tạo bảng SQL với khóa chính `ID` và ràng buộc mã phân loại; nhập dữ liệu một lần vào tệp SQLite. Những lần chạy tiếp theo kiểm tra và sử dụng lại bảng có sẵn, không xóa hoặc nhân đôi các hồ sơ.
+3. Thực hiện 13 truy vấn SELECT; Q01–Q10 tương ứng 10 yêu cầu truy vấn bằng API Python trong đề bài. Các nhóm giới hạn 10 hồ sơ sử dụng `ORDER BY` để bảo đảm kết quả xác định.
+4. Phân tích khám phá bằng thống kê mô tả, histogram, heatmap, regplot và boxplot.
+5. Xử lý ngoại lệ huyết áp tâm thu và tâm trương bằng chặn IQR; thực hiện ANOVA, Levene/T-test, Pearson, Chi-square và OLS theo nội dung đề bài.
+6. Chia dữ liệu thành 49.000 hồ sơ huấn luyện và 21.000 hồ sơ kiểm tra, phân tầng theo nhãn với `random_state = 42`.
+7. So sánh RidgeClassifier, AdaBoost, Gradient Boosting, Random Forest, Bagging KNN, Extra Trees và Stacking, cùng mô hình dự đoán lớp phổ biến làm mốc so sánh.
+8. Tinh chỉnh Gradient Boosting bằng `GridSearchCV` với 8 tổ hợp tham số và 3 fold trên tập huấn luyện.
 
 Trong quy trình mô hình, các ngưỡng IQR và tham số chuẩn hóa chỉ được học trên dữ liệu huấn luyện của từng lần fit. Các bước tiền xử lý nằm trong pipeline, bao gồm cả quá trình cross-validation. Ngưỡng IQR tính trên toàn bộ dữ liệu chỉ phục vụ EDA và thống kê.
 
@@ -84,13 +89,13 @@ Các kết quả bổ sung được lưu trong `results/`: kiểm định thốn
 | Yêu cầu | Tệp hoặc minh chứng | Trạng thái |
 |---|---|---|
 | Tìm hiểu và kiểm tra dữ liệu | Notebook 02; `data/extraction_audit.json` | Đã thực thi cục bộ |
-| Nhập dữ liệu Db2 và chạy SQL console | `sql/`; notebook 01 | Mã nguồn đã chuẩn bị; chưa thực thi trên Db2 Cloud |
-| Kết nối `ibm_db` và thực hiện 10 truy vấn | Notebook 01 | SELECT đã kiểm chứng cục bộ; kết nối Db2 Cloud chưa thực thi |
+| Tạo bảng, nhập dữ liệu và chạy SQL | `data/cardio_train.sqlite`; `sql/03_create_table_sqlite.sql`; `sql/04_queries_sqlite.sql` | Đã thực thi bằng SQLite theo phương án thay thế được chấp nhận |
+| Kết nối Python và thực hiện 10 truy vấn | Notebook 01; `results/db_execution_status.json` | Đã thực thi bằng `sqlite3`; có thêm 3 truy vấn bổ sung |
 | Xuất CSV và đóng kết nối | Notebook 01 | Đã thực thi cục bộ |
 | EDA, IQR, kiểm định và OLS | Notebook 02 | Đã thực thi cục bộ |
 | Huấn luyện và so sánh các mô hình | Notebook 02; `results/model_comparison.csv` | Đã thực thi cục bộ |
 | Tinh chỉnh mô hình | Notebook 02; `results/grid_search.csv` | Đã thực thi cục bộ |
-| Thực hiện lại trên Watson Studio | Quy trình tái lập bên dưới | Chưa thực thi trên Watson Studio |
+| Môi trường notebook phân tích | Notebook 02 | Đã thực thi cục bộ theo phương án thay thế được chấp nhận |
 | Lưu trữ bài tập trên GitHub | Repository này | Đã hoàn tất |
 
 ## Tái lập trên môi trường cục bộ
@@ -102,11 +107,30 @@ python -m pip install -r requirements.txt
 python -m notebook
 ```
 
-Chạy lần lượt notebook 01 và notebook 02. Notebook 01 mặc định sử dụng SQLite với `RUN_DB2 = 0`; notebook 02 thực hiện phân tích và huấn luyện từ dữ liệu gốc.
+Chạy lần lượt notebook 01 và notebook 02. Notebook 01 mặc định sử dụng tệp SQLite với `RUN_DB2 = 0`; notebook 02 thực hiện phân tích và huấn luyện từ dữ liệu gốc. Không cần tài khoản IBM để tái lập phương án này.
+
+Notebook 01 tạo cơ sở dữ liệu khi bảng chưa tồn tại; nếu bảng đã tồn tại, toàn bộ hồ sơ được đối chiếu với CSV gốc trước khi truy vấn. Có thể cấu hình vị trí tệp khác bằng biến môi trường `SQLITE_DB_PATH`.
 
 `cardio_utils.py` phải nằm trong thư mục làm việc hoặc trong đường dẫn import để thực thi pipeline và nạp mô hình `results/cardio_classifier.joblib`. Các phiên bản thư viện được ghi trong `requirements.txt` và `results/environment_versions.csv`.
 
-## Thực thi trên IBM Cloud
+## Kiểm tra cơ sở dữ liệu đã lưu
+
+Từ thư mục gốc repository, có thể mở lại tệp bằng Python:
+
+```python
+import sqlite3
+
+connection = sqlite3.connect("data/cardio_train.sqlite")
+print(connection.execute("SELECT COUNT(*), SUM(CARDIO) FROM CARDIO_TRAIN").fetchone())
+print(connection.execute("PRAGMA integrity_check").fetchone())
+connection.close()
+```
+
+Kết quả mong đợi là `(70000, 34979)` và `('ok',)`. Kết quả kiểm tra thực tế sau khi đóng và mở lại kết nối nằm trong `results/db_execution_status.json`.
+
+`sql/04_queries_sqlite.sql` chứa các SELECT có thể thực thi trực tiếp trên tệp SQLite. Mỗi truy vấn được ghi rõ mã Q01–Q13 và nội dung tương ứng.
+
+## IBM Cloud — phương án tham khảo tùy chọn
 
 ### IBM Db2
 
@@ -142,6 +166,7 @@ Thông tin kết nối được cung cấp qua biến môi trường hoặc cơ 
 ## Tài liệu tham khảo
 
 - Đề bài ADY201m và tài liệu PDF của bộ dữ liệu `cardio_train_raw` kèm theo đề.
+- [Python — Kết nối, truy vấn và lưu trữ SQLite bằng sqlite3](https://docs.python.org/3/library/sqlite3.html).
 - [IBM — Kết nối Db2 bằng Python](https://www.ibm.com/docs/en/db2/12.1.0?topic=db-connecting-database-server).
 - [IBM — Tạo và quản lý notebook](https://www.ibm.com/docs/en/ws-and-kc?topic=editor-creating-managing-notebooks).
 - [IBM — Nạp và truy cập dữ liệu trong notebook](https://www.ibm.com/docs/en/ws-and-kc?topic=scripts-loading-accessing-data-in-notebook).

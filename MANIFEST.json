@@ -1,8 +1,8 @@
 [
   {
     "file": ".env.example",
-    "bytes": 189,
-    "sha256": "29bd7d53da99728ddb13d84e7455c576d8640f93c4d104b21000a1ee2e1fa0b3"
+    "bytes": 270,
+    "sha256": "5e004e169c14eac1d4f11487728a141107bc4202409e58c3e6b78412710c47f2"
   },
   {
     "file": ".gitignore",
@@ -11,28 +11,28 @@
   },
   {
     "file": "01_Db2_SQL_Python.html",
-    "bytes": 31842,
-    "sha256": "ea088138662d63715f61bcdfee130349cd3cbc14bdfe46d177b4149b38ea2920"
+    "bytes": 33641,
+    "sha256": "e03ce625f82c673a4c3539a723b178114a2582fa6a9c6af360e154e7b062ef34"
   },
   {
     "file": "01_Db2_SQL_Python.ipynb",
-    "bytes": 51764,
-    "sha256": "9ba7146def57f50dfdba475997ecc6c6f1734121cbbc116fbef178ad56095fc8"
+    "bytes": 54253,
+    "sha256": "406d79b955e744399d69ad4d30d000529ff37ca047ddc36a75a0b7bd7ce11307"
   },
   {
     "file": "02_Cardio_Analysis_ML.html",
-    "bytes": 1271789,
-    "sha256": "8582ba14e5a52061b09f67c32831f3f07814bf40f27cd5dd00a2a43965360993"
+    "bytes": 1271792,
+    "sha256": "cb49a3c1d7e23cdc8c260970775eac8862d0351f1602c70cd6a8cdd97fa89200"
   },
   {
     "file": "02_Cardio_Analysis_ML.ipynb",
-    "bytes": 1289344,
-    "sha256": "85e9d8de0d0efec2d78fc3eea95acd4e610d201f678e2cc56c0655b550191a92"
+    "bytes": 1289347,
+    "sha256": "8e3cfd52829039ce7a0f39845b1c7b922c56f553de9750313db8cc646f5ebfe2"
   },
   {
     "file": "Bao_cao_ADY201m.html",
-    "bytes": 910822,
-    "sha256": "c58464a051c83207ee9dc358156bcd64ab9507f7328bf9f016a3b1abbaacf838"
+    "bytes": 910750,
+    "sha256": "f84fbc7006db62a569f681259dcd42afb0744d2f31b341e147e070040eb4bdb8"
   },
   {
     "file": "cardio_utils.py",
@@ -41,13 +41,23 @@
   },
   {
     "file": "README.md",
-    "bytes": 11553,
-    "sha256": "8d6e6de67ac9c2079261bee13ed106a0e71f9489a55070b7e6de1583249619a4"
+    "bytes": 13719,
+    "sha256": "609ea83e39811da1a7c92723d68222ce9977b7e8a7d06313b5e3d7fede7a2854"
   },
   {
     "file": "requirements.txt",
     "bytes": 280,
     "sha256": "5c54537d81f9626a79fa504e9018f44cfee1c4e852c34e54254df2fad013ef9f"
+  },
+  {
+    "file": "sqlite_storage.py",
+    "bytes": 2055,
+    "sha256": "f2bf935ca03c74f63cf458eeb51b2a7d5ae7b978269a4d2a84ce55bc148382e5"
+  },
+  {
+    "file": "data/cardio_train.sqlite",
+    "bytes": 1990656,
+    "sha256": "92c8f198e40bcd79d253648a2bccf7d258c2da1f79be2a8650e8d01df58b030b"
   },
   {
     "file": "data/cardio_train_clean.csv",
@@ -71,8 +81,8 @@
   },
   {
     "file": "data/README.md",
-    "bytes": 390,
-    "sha256": "f48b36d8fefdaa599425708c05b4f4e399330f4fd91b955aac8841436acbc45e"
+    "bytes": 551,
+    "sha256": "fb0325fdf9b31b92614536998e2a11bd69cf95b19b53a90c3de4f80fd193f5c2"
   },
   {
     "file": "figures/01_target_distribution.png",
@@ -136,8 +146,8 @@
   },
   {
     "file": "results/db_execution_status.json",
-    "bytes": 110,
-    "sha256": "3ef1a43f736b7093e1297febaa4e77cb9d0388d93e3be14008977d067f571126"
+    "bytes": 363,
+    "sha256": "5fe9e0cd5c2ba7b7e47d58b9956de873f6c0ba18ed43be28a2580681ca389ec4"
   },
   {
     "file": "results/descriptive_statistics.csv",
@@ -196,8 +206,8 @@
   },
   {
     "file": "results/summary.json",
-    "bytes": 1422,
-    "sha256": "813847b2d844f5198845206d1db5c2951f77c27621a2745fe1690c49be0dde76"
+    "bytes": 1460,
+    "sha256": "bd6a4c55966cd5af400f19348336bbf0e859b8083b46c2ce019e7fc623a5de88"
   },
   {
     "file": "results/test_ids.csv",
@@ -225,13 +235,23 @@
     "sha256": "baf7ca97b3829c88143347157b13633dc4cf4bb6593b1339d0e0c875a3de8573"
   },
   {
+    "file": "sql/03_create_table_sqlite.sql",
+    "bytes": 640,
+    "sha256": "85f188d6873d21b50b1b35c5259c0bb8cdf6f5d35943075b0b090934f8f77af0"
+  },
+  {
+    "file": "sql/04_queries_sqlite.sql",
+    "bytes": 1740,
+    "sha256": "23edbf6baa1fd3a0c94c98b4845b1ee9a5f22167c2b7b4f91dd8bb43e891c38a"
+  },
+  {
     "file": "sql/queries.json",
     "bytes": 2230,
     "sha256": "8b852ae2c6aecdc05355a25759786693ebbb170f9fd4fd6254a3f3f82520a79b"
   },
   {
     "file": "sql/README.md",
-    "bytes": 358,
-    "sha256": "f8ef1ea72d2e06e8a9736889f300988e765ac30934143180b5dc8913b268497d"
+    "bytes": 661,
+    "sha256": "170cd397b33eb10689bdf318652af73d762b4e47010c0ab6216394d6b98a35ac"
   }
 ]

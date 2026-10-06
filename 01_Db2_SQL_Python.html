@@ -1,10 +1,7 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>01_Db2_SQL_Python.ipynb</title><style>body{font-family:Arial,Segoe UI,sans-serif;background:#f4f7fa;color:#172c3c;margin:0;line-height:1.65}main{max-width:1080px;margin:32px auto;padding:40px;background:white;border-radius:18px;box-shadow:0 8px 32px #17314312}h1{font-size:32px;line-height:1.25;color:#15475c}h2{border-bottom:2px solid #dce9ed;padding-bottom:8px;margin-top:38px}h3{margin-top:28px}p,li{font-size:16px}.status{background:#fff6df;border-left:5px solid #c99126;padding:16px 20px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}.card{background:#e9f4f3;border-radius:12px;padding:20px}.card strong{display:block;font-size:28px;color:#236864}.table{border-collapse:collapse;width:100%;font-size:14px;margin:16px 0}.table th{background:#e5f0f3;text-align:left}.table th,.table td{padding:10px;border-bottom:1px solid #dbe5eb}figure{margin:28px 0}img{display:block;max-width:100%;height:auto;margin:auto}figcaption{text-align:center;font-size:14px;color:#526777;padding-top:8px}details{border:1px solid #dce5eb;border-radius:8px;padding:14px;margin:12px 0}summary{cursor:pointer;font-weight:bold}pre{white-space:pre-wrap;word-break:break-word;padding:14px;background:#f2f5f8;font-size:13px}a{color:#16637c}code{background:#eff4f7;padding:2px 5px}@media(max-width:700px){main{margin:0;padding:20px;border-radius:0}.cards{grid-template-columns:1fr}.table{font-size:12px}.table td,.table th{padding:6px}}@media print{body{background:white}main{box-shadow:none;margin:0;padding:12px}details{display:block}figure,.card{break-inside:avoid}.status{background:#fff6df}} .dataframe{border-collapse:collapse;font-size:13px;width:100%}.dataframe td,.dataframe th{padding:8px;border-bottom:1px solid #dce5eb}.code-cell{margin:24px 0;border-top:1px solid #e3eaf0}</style></head><body><main><h1>ADY201m — IBM Db2 và truy vấn bằng Python</h1>
-<p><strong>Trạng thái bản chạy đính kèm:</strong> đã kiểm chứng các SELECT bằng SQLite trên dữ liệu gốc 70.000 dòng.
-<strong>Chưa chạy IBM Db2 Cloud:</strong> người dùng đã tạo tài khoản IBM, nhưng phiên đăng nhập chưa được kết nối. Kết quả SQLite không phải minh chứng Db2.
-Bật <code>RUN_DB2=1</code> và cung cấp biến môi trường của tài khoản riêng để chạy thật bằng <code>ibm_db</code>.
-Q01–Q10 tương ứng 10 bài API trong đề; Q11–Q13 bổ sung các yêu cầu trên console.
-Các nhóm 10 dòng dùng thứ tự ID rõ ràng để kết quả có thể lặp lại. Vì đề mẫu không luôn có ORDER BY,
-tỷ lệ trong một số nhóm có thể khác mẫu. Tỷ lệ của 10 hồ sơ chỉ mô tả mẫu truy vấn, không phải nguy cơ dân số.</p>
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>01_Db2_SQL_Python.ipynb</title><style>body{font-family:Arial,Segoe UI,sans-serif;background:#f4f7fa;color:#172c3c;margin:0;line-height:1.65}main{max-width:1080px;margin:32px auto;padding:40px;background:white;border-radius:18px;box-shadow:0 8px 32px #17314312}h1{font-size:32px;line-height:1.25;color:#15475c}h2{border-bottom:2px solid #dce9ed;padding-bottom:8px;margin-top:38px}h3{margin-top:28px}p,li{font-size:16px}.status{background:#fff6df;border-left:5px solid #c99126;padding:16px 20px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}.card{background:#e9f4f3;border-radius:12px;padding:20px}.card strong{display:block;font-size:28px;color:#236864}.table{border-collapse:collapse;width:100%;font-size:14px;margin:16px 0}.table th{background:#e5f0f3;text-align:left}.table th,.table td{padding:10px;border-bottom:1px solid #dbe5eb}figure{margin:28px 0}img{display:block;max-width:100%;height:auto;margin:auto}figcaption{text-align:center;font-size:14px;color:#526777;padding-top:8px}details{border:1px solid #dce5eb;border-radius:8px;padding:14px;margin:12px 0}summary{cursor:pointer;font-weight:bold}pre{white-space:pre-wrap;word-break:break-word;padding:14px;background:#f2f5f8;font-size:13px}a{color:#16637c}code{background:#eff4f7;padding:2px 5px}@media(max-width:700px){main{margin:0;padding:20px;border-radius:0}.cards{grid-template-columns:1fr}.table{font-size:12px}.table td,.table th{padding:6px}}@media print{body{background:white}main{box-shadow:none;margin:0;padding:12px}details{display:block}figure,.card{break-inside:avoid}.status{background:#fff6df}} .dataframe{border-collapse:collapse;font-size:13px;width:100%}.dataframe td,.dataframe th{padding:8px;border-bottom:1px solid #dce5eb}.code-cell{margin:24px 0;border-top:1px solid #e3eaf0}</style></head><body><main><h1>ADY201m — Cơ sở dữ liệu SQL và truy vấn bằng Python</h1>
+<p><strong>Phương án thực hiện:</strong> SQLite lưu bằng tệp và notebook chạy cục bộ, theo phương án thay thế IBM Cloud đã được giảng viên chấp nhận.</p>
+<p>Notebook tạo hoặc mở <code>data/cardio_train.sqlite</code>, lưu bảng <code>CARDIO_TRAIN</code> gồm 70.000 hồ sơ và thực thi 13 SELECT. Q01–Q10 tương ứng 10 bài truy vấn API; Q11–Q13 bổ sung các yêu cầu trên console. Cơ sở dữ liệu tiếp tục tồn tại sau khi đóng kết nối và khi kết thúc phiên notebook.</p>
+<p>Các nhóm 10 hồ sơ dùng thứ tự xác định. Tỷ lệ của các nhóm này chỉ mô tả mẫu truy vấn. Nhánh IBM Db2 được giữ để tham khảo hoặc chạy tùy chọn với <code>RUN_DB2=1</code>; kết quả đính kèm là kết quả SQLite thực tế.</p>
 <section class="code-cell"><p>Cell 1</p><pre>from pathlib import Path
 import os, json, sqlite3, re
 import pandas as pd
@@ -38,18 +35,22 @@ if RUN_DB2:
             return pd.DataFrame(rows)
         finally: ibm_db.free_stmt(statement)
 else:
-    local=sqlite3.connect(&#x27;:memory:&#x27;)
-    df.rename(columns=str.upper).to_sql(&#x27;CARDIO_TRAIN&#x27;,local,index=False)
-    ENGINE=&#x27;SQLite local — kiểm chứng SELECT, chưa chạy Db2 Cloud&#x27;
+    from sqlite_storage import open_cardio_database
+    DATABASE_PATH=Path(os.getenv(&#x27;SQLITE_DB_PATH&#x27;, str(ROOT/&#x27;data/cardio_train.sqlite&#x27;))).resolve()
+    local, created=open_cardio_database(df, DATABASE_PATH, ROOT/&#x27;sql/03_create_table_sqlite.sql&#x27;)
+    ENGINE=&#x27;SQLite — cơ sở dữ liệu lưu bằng tệp&#x27;
+    print(&#x27;Đã tạo và nhập dữ liệu.&#x27; if created else &#x27;Đã mở cơ sở dữ liệu có sẵn; dữ liệu khớp CSV gốc.&#x27;)
+    print(&#x27;Tệp cơ sở dữ liệu:&#x27;, DATABASE_PATH.relative_to(ROOT) if DATABASE_PATH.is_relative_to(ROOT) else DATABASE_PATH.name)
     def query(sql):
         sql=re.sub(r&#x27;FETCH FIRST (\d+) ROWS ONLY&#x27;,r&#x27;LIMIT \1&#x27;,sql,flags=re.I)
         return pd.read_sql_query(sql,local)
-print(ENGINE)</pre><pre>SQLite local — kiểm chứng SELECT, chưa chạy Db2 Cloud
-</pre></section><h2>Tạo bảng và nhập CSV trên Db2</h2>
-<p>Chạy <code>sql/01_create_table.sql</code> trong schema của bạn. Dùng chức năng nạp file của Db2, chọn CSV gốc,
-dấu phân cách <code>;</code>, dòng đầu là tên cột; đối chiếu kiểu dữ liệu với DDL. Không dùng tài khoản mẫu trong PDF.
-Giữ AGE ở đơn vị ngày. Q13 đổi sang năm theo phép chia 365 như hướng dẫn mẫu.
-<code>sql/02_queries.sql</code> chứa tất cả câu truy vấn console với cú pháp <code>FETCH FIRST</code> của Db2.</p>
+print(ENGINE)</pre><pre>Đã mở cơ sở dữ liệu có sẵn; dữ liệu khớp CSV gốc.
+Tệp cơ sở dữ liệu: data\cardio_train.sqlite
+SQLite — cơ sở dữ liệu lưu bằng tệp
+</pre></section><h2>Tạo bảng và lưu dữ liệu</h2>
+<p><code>sql/03_create_table_sqlite.sql</code> định nghĩa bảng SQLite với khóa chính <code>ID</code> và ràng buộc cho các mã phân loại. Cell thiết lập nhập CSV gốc khi bảng chưa tồn tại; những lần chạy sau kiểm tra và sử dụng lại dữ liệu, không xóa hay nhân đôi các hồ sơ.</p>
+<p><code>sql/04_queries_sqlite.sql</code> chứa 13 truy vấn có thể chạy trực tiếp trong công cụ SQLite. Tuổi được lưu theo ngày và chuyển sang năm trong SELECT.</p>
+<p>Hai tệp <code>sql/01_create_table.sql</code> và <code>sql/02_queries.sql</code> là phiên bản Db2 tham khảo; việc thực thi nhánh Db2 cần dịch vụ và thông tin kết nối riêng.</p>
 <h2>Q01 — Tổng số hồ sơ</h2>
 <pre><code class="language-sql">SELECT COUNT(*) AS TOTAL_ROWS FROM CARDIO_TRAIN;
 </code></pre>
@@ -160,7 +161,7 @@ if &#x27;CARDIO&#x27; in result.columns:
   </tbody>
 </table>
 </div></div></section><h2>Q04 — 10 người có AP_HI cao nhất</h2>
-<pre><code class="language-sql">SELECT ID, AP_HI, CARDIO FROM CARDIO_TRAIN ORDER BY AP_HI DESC, ID ASC FETCH FIRST 10 ROWS ONLY;
+<pre><code class="language-sql">SELECT ID, AP_HI, CARDIO FROM CARDIO_TRAIN ORDER BY AP_HI DESC, ID ASC LIMIT 10;
 </code></pre>
 <section class="code-cell"><p>Cell 5</p><pre>result=query(&#x27;SELECT ID, AP_HI, CARDIO FROM CARDIO_TRAIN ORDER BY AP_HI DESC, ID ASC FETCH FIRST 10 ROWS ONLY&#x27;)
 display(result)
@@ -253,7 +254,7 @@ if &#x27;CARDIO&#x27; in result.columns:
   </tbody>
 </table>
 </div></div></section><h2>Q05 — 10 người có cân nặng trên trung bình</h2>
-<pre><code class="language-sql">SELECT ID, WEIGHT, CARDIO FROM CARDIO_TRAIN WHERE WEIGHT&gt;(SELECT AVG(WEIGHT) FROM CARDIO_TRAIN) ORDER BY WEIGHT DESC, ID ASC FETCH FIRST 10 ROWS ONLY;
+<pre><code class="language-sql">SELECT ID, WEIGHT, CARDIO FROM CARDIO_TRAIN WHERE WEIGHT&gt;(SELECT AVG(WEIGHT) FROM CARDIO_TRAIN) ORDER BY WEIGHT DESC, ID ASC LIMIT 10;
 </code></pre>
 <section class="code-cell"><p>Cell 6</p><pre>result=query(&#x27;SELECT ID, WEIGHT, CARDIO FROM CARDIO_TRAIN WHERE WEIGHT&gt;(SELECT AVG(WEIGHT) FROM CARDIO_TRAIN) ORDER BY WEIGHT DESC, ID ASC FETCH FIRST 10 ROWS ONLY&#x27;)
 display(result)
@@ -346,7 +347,7 @@ if &#x27;CARDIO&#x27; in result.columns:
   </tbody>
 </table>
 </div></div></section><h2>Q06 — 10 người có đường huyết cao</h2>
-<pre><code class="language-sql">SELECT ID, GLUC, CARDIO FROM CARDIO_TRAIN WHERE GLUC&gt;1 ORDER BY ID ASC FETCH FIRST 10 ROWS ONLY;
+<pre><code class="language-sql">SELECT ID, GLUC, CARDIO FROM CARDIO_TRAIN WHERE GLUC&gt;1 ORDER BY ID ASC LIMIT 10;
 </code></pre>
 <section class="code-cell"><p>Cell 7</p><pre>result=query(&#x27;SELECT ID, GLUC, CARDIO FROM CARDIO_TRAIN WHERE GLUC&gt;1 ORDER BY ID ASC FETCH FIRST 10 ROWS ONLY&#x27;)
 display(result)
@@ -439,7 +440,7 @@ if &#x27;CARDIO&#x27; in result.columns:
   </tbody>
 </table>
 </div></div></section><h2>Q07 — 10 người lớn tuổi nhất</h2>
-<pre><code class="language-sql">SELECT ID, CAST(AGE/365 AS INTEGER) AS AGE_YEARS, CARDIO FROM CARDIO_TRAIN ORDER BY AGE DESC, ID ASC FETCH FIRST 10 ROWS ONLY;
+<pre><code class="language-sql">SELECT ID, CAST(AGE/365 AS INTEGER) AS AGE_YEARS, CARDIO FROM CARDIO_TRAIN ORDER BY AGE DESC, ID ASC LIMIT 10;
 </code></pre>
 <section class="code-cell"><p>Cell 8</p><pre>result=query(&#x27;SELECT ID, CAST(AGE/365 AS INTEGER) AS AGE_YEARS, CARDIO FROM CARDIO_TRAIN ORDER BY AGE DESC, ID ASC FETCH FIRST 10 ROWS ONLY&#x27;)
 display(result)
@@ -532,7 +533,7 @@ if &#x27;CARDIO&#x27; in result.columns:
   </tbody>
 </table>
 </div></div></section><h2>Q08 — 10 người có cholesterol mức 3</h2>
-<pre><code class="language-sql">SELECT ID, CHOLESTEROL, CARDIO FROM CARDIO_TRAIN WHERE CHOLESTEROL=3 ORDER BY ID ASC FETCH FIRST 10 ROWS ONLY;
+<pre><code class="language-sql">SELECT ID, CHOLESTEROL, CARDIO FROM CARDIO_TRAIN WHERE CHOLESTEROL=3 ORDER BY ID ASC LIMIT 10;
 </code></pre>
 <section class="code-cell"><p>Cell 9</p><pre>result=query(&#x27;SELECT ID, CHOLESTEROL, CARDIO FROM CARDIO_TRAIN WHERE CHOLESTEROL=3 ORDER BY ID ASC FETCH FIRST 10 ROWS ONLY&#x27;)
 display(result)
@@ -625,7 +626,7 @@ if &#x27;CARDIO&#x27; in result.columns:
   </tbody>
 </table>
 </div></div></section><h2>Q09 — 10 người hút thuốc</h2>
-<pre><code class="language-sql">SELECT ID, SMOKE, CARDIO FROM CARDIO_TRAIN WHERE SMOKE=1 ORDER BY ID ASC FETCH FIRST 10 ROWS ONLY;
+<pre><code class="language-sql">SELECT ID, SMOKE, CARDIO FROM CARDIO_TRAIN WHERE SMOKE=1 ORDER BY ID ASC LIMIT 10;
 </code></pre>
 <section class="code-cell"><p>Cell 10</p><pre>result=query(&#x27;SELECT ID, SMOKE, CARDIO FROM CARDIO_TRAIN WHERE SMOKE=1 ORDER BY ID ASC FETCH FIRST 10 ROWS ONLY&#x27;)
 display(result)
@@ -718,7 +719,7 @@ if &#x27;CARDIO&#x27; in result.columns:
   </tbody>
 </table>
 </div></div></section><h2>Q10 — 10 người có vận động</h2>
-<pre><code class="language-sql">SELECT ID, ACTIVE, CARDIO FROM CARDIO_TRAIN WHERE ACTIVE=1 ORDER BY ID ASC FETCH FIRST 10 ROWS ONLY;
+<pre><code class="language-sql">SELECT ID, ACTIVE, CARDIO FROM CARDIO_TRAIN WHERE ACTIVE=1 ORDER BY ID ASC LIMIT 10;
 </code></pre>
 <section class="code-cell"><p>Cell 11</p><pre>result=query(&#x27;SELECT ID, ACTIVE, CARDIO FROM CARDIO_TRAIN WHERE ACTIVE=1 ORDER BY ID ASC FETCH FIRST 10 ROWS ONLY&#x27;)
 display(result)
@@ -811,7 +812,7 @@ if &#x27;CARDIO&#x27; in result.columns:
   </tbody>
 </table>
 </div></div></section><h2>Q11 — 10 người có AP_LO thấp nhất</h2>
-<pre><code class="language-sql">SELECT ID, AP_LO, CARDIO FROM CARDIO_TRAIN ORDER BY AP_LO ASC, ID ASC FETCH FIRST 10 ROWS ONLY;
+<pre><code class="language-sql">SELECT ID, AP_LO, CARDIO FROM CARDIO_TRAIN ORDER BY AP_LO ASC, ID ASC LIMIT 10;
 </code></pre>
 <section class="code-cell"><p>Cell 12</p><pre>result=query(&#x27;SELECT ID, AP_LO, CARDIO FROM CARDIO_TRAIN ORDER BY AP_LO ASC, ID ASC FETCH FIRST 10 ROWS ONLY&#x27;)
 display(result)
@@ -904,7 +905,7 @@ if &#x27;CARDIO&#x27; in result.columns:
   </tbody>
 </table>
 </div></div></section><h2>Q12 — 10 người uống rượu</h2>
-<pre><code class="language-sql">SELECT ID, ALCO, CARDIO FROM CARDIO_TRAIN WHERE ALCO=1 ORDER BY ID ASC FETCH FIRST 10 ROWS ONLY;
+<pre><code class="language-sql">SELECT ID, ALCO, CARDIO FROM CARDIO_TRAIN WHERE ALCO=1 ORDER BY ID ASC LIMIT 10;
 </code></pre>
 <section class="code-cell"><p>Cell 13</p><pre>result=query(&#x27;SELECT ID, ALCO, CARDIO FROM CARDIO_TRAIN WHERE ALCO=1 ORDER BY ID ASC FETCH FIRST 10 ROWS ONLY&#x27;)
 display(result)
@@ -997,7 +998,7 @@ if &#x27;CARDIO&#x27; in result.columns:
   </tbody>
 </table>
 </div></div></section><h2>Q13 — Xem dữ liệu và đổi tuổi sang năm</h2>
-<pre><code class="language-sql">SELECT ID, AGE AS AGE_DAYS, CAST(AGE/365 AS INTEGER) AS AGE_YEARS, GENDER, CARDIO FROM CARDIO_TRAIN ORDER BY ID ASC FETCH FIRST 10 ROWS ONLY;
+<pre><code class="language-sql">SELECT ID, AGE AS AGE_DAYS, CAST(AGE/365 AS INTEGER) AS AGE_YEARS, GENDER, CARDIO FROM CARDIO_TRAIN ORDER BY ID ASC LIMIT 10;
 </code></pre>
 <section class="code-cell"><p>Cell 14</p><pre>result=query(&#x27;SELECT ID, AGE AS AGE_DAYS, CAST(AGE/365 AS INTEGER) AS AGE_YEARS, GENDER, CARDIO FROM CARDIO_TRAIN ORDER BY ID ASC FETCH FIRST 10 ROWS ONLY&#x27;)
 display(result)
@@ -1111,9 +1112,8 @@ if &#x27;CARDIO&#x27; in result.columns:
     </tr>
   </tbody>
 </table>
-</div></div></section><h2>Xuất CSV và đóng kết nối</h2>
-<p>Dữ liệu xuất giữ tuổi theo ngày, để notebook phân tích chỉ đổi đơn vị đúng một lần.
-Khi chạy chế độ Cloud, dữ liệu dưới đây được tải từ Db2; chế độ local chỉ xuất bản kiểm chứng.</p>
+</div></div></section><h2>Xuất CSV, đóng kết nối và kiểm tra lưu trữ</h2>
+<p>Dữ liệu xuất giữ tuổi theo ngày để notebook phân tích chỉ chuyển đổi một lần. Sau khi đóng kết nối SQLite, notebook mở lại tệp và kiểm tra số hồ sơ, số người mắc bệnh cùng tính toàn vẹn của cơ sở dữ liệu.</p>
 <section class="code-cell"><p>Cell 15</p><pre>try:
     downloaded=query(&#x27;SELECT * FROM CARDIO_TRAIN ORDER BY ID&#x27;)
     downloaded.columns=downloaded.columns.str.lower()
@@ -1125,7 +1125,23 @@ finally:
         import ibm_db
         ibm_db.close(db2_conn)
     elif not RUN_DB2: local.close()
-(ROOT/&#x27;results/db_execution_status.json&#x27;).write_text(json.dumps({&#x27;engine&#x27;:ENGINE,&#x27;cloud_executed&#x27;:RUN_DB2},ensure_ascii=False,indent=2),encoding=&#x27;utf-8&#x27;)
-print(&#x27;Đã đóng kết nối.&#x27;)</pre><pre>Đã xuất 70,000 dòng. Nguồn: SQLite local — kiểm chứng SELECT, chưa chạy Db2 Cloud
+status={&#x27;engine&#x27;:ENGINE,&#x27;cloud_executed&#x27;:RUN_DB2,&#x27;rows&#x27;:len(downloaded),
+        &#x27;disease_cases&#x27;:int(downloaded.cardio.sum()),&#x27;queries_executed&#x27;:13,
+        &#x27;approved_alternative&#x27;:&#x27;SQLite and local notebook execution&#x27;}
+if not RUN_DB2:
+    assert DATABASE_PATH.is_file()
+    reopened=sqlite3.connect(DATABASE_PATH)
+    try:
+        total,cases=reopened.execute(&#x27;SELECT COUNT(*), SUM(CARDIO) FROM CARDIO_TRAIN&#x27;).fetchone()
+        integrity=reopened.execute(&#x27;PRAGMA integrity_check&#x27;).fetchone()[0]
+        assert (total,cases,integrity)==(70000,34979,&#x27;ok&#x27;)
+        status.update({&#x27;persistent&#x27;:True,
+                       &#x27;database_file&#x27;:str(DATABASE_PATH.relative_to(ROOT)) if DATABASE_PATH.is_relative_to(ROOT) else DATABASE_PATH.name,
+                       &#x27;reopen_verified&#x27;:True,&#x27;integrity_check&#x27;:integrity})
+        print(f&#x27;Mở lại tệp: {total:,} hồ sơ, {cases:,} hồ sơ mắc bệnh; integrity_check={integrity}.&#x27;)
+    finally: reopened.close()
+(ROOT/&#x27;results/db_execution_status.json&#x27;).write_text(json.dumps(status,ensure_ascii=False,indent=2),encoding=&#x27;utf-8&#x27;)
+print(&#x27;Đã đóng kết nối.&#x27;)</pre><pre>Đã xuất 70,000 dòng. Nguồn: SQLite — cơ sở dữ liệu lưu bằng tệp
+Mở lại tệp: 70,000 hồ sơ, 34,979 hồ sơ mắc bệnh; integrity_check=ok.
 Đã đóng kết nối.
 </pre></section></main></body></html>
