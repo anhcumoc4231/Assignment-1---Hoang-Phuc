@@ -1,6 +1,10 @@
-# Db2 SQL
+# Assignment SQL
 
-Run `01_create_table.sql` in your Db2 schema and load `data/cardio_train_raw.csv` with a semicolon separator. Run `02_queries.sql` for the assignment queries. `queries.json` supplies the same SELECT statements to notebook 01.
+The accepted implementation uses persistent SQLite storage in `data/cardio_train.sqlite`.
 
-Local SELECT results were validated with SQLite. IBM Db2 execution requires the user's active service and credentials.
+- `03_create_table_sqlite.sql`: SQLite schema, primary key and category constraints. Notebook 01 creates and imports the database when the table does not exist.
+- `04_queries_sqlite.sql`: 13 queries ready to execute directly in SQLite.
+- `01_create_table.sql` and `02_queries.sql`: optional Db2 reference versions.
+- `queries.json`: Db2 query definitions; notebook 01 converts the row-limit syntax when executing with SQLite.
 
+SQLite and local notebook execution replace IBM Cloud under the instructor-approved alternative. Db2 Cloud was not executed.
