@@ -1,0 +1,59 @@
+{
+  "quality": {
+    "rows": 70000,
+    "columns": 13,
+    "unique_ids": 70000,
+    "missing_values": 0,
+    "duplicate_feature_target_rows": 3208,
+    "disease_cases": 34979,
+    "disease_rate": 0.4997
+  },
+  "selected_model": "GradientBoosting tuned (CV)",
+  "selected_test_metrics": {
+    "accuracy": 0.7304285714285714,
+    "precision": 0.7454545454545455,
+    "recall": 0.6993520106727654,
+    "f1": 0.7216677319435567,
+    "roc_auc": 0.7981407821593484,
+    "fit_evaluate_seconds": 0.08335219999571564
+  },
+  "cv_accuracy": 0.7368775512177198,
+  "best_params": {
+    "model__learning_rate": 0.1,
+    "model__max_depth": 2,
+    "model__n_estimators": 150
+  },
+  "confusion_matrix": [
+    [
+      8000,
+      2506
+    ],
+    [
+      3155,
+      7339
+    ]
+  ],
+  "train_rows": 49000,
+  "test_rows": 21000,
+  "train_iqr_lower": [
+    90.0,
+    65.0
+  ],
+  "train_iqr_upper": [
+    170.0,
+    105.0
+  ],
+  "cloud_executed": false,
+  "github_uploaded": true,
+  "versions": {
+    "numpy": "2.2.6",
+    "pandas": "2.2.3",
+    "scipy": "1.15.3",
+    "scikit-learn": "1.7.2",
+    "statsmodels": "0.14.5",
+    "matplotlib": "3.10.7",
+    "seaborn": "0.13.2"
+  },
+  "github_repository": "https://github.com/anhcumoc4231/ADY201m-Cardio-Assignment",
+  "cloud_blocker": "IBM account setup / Upgrade account not completed; session logged out. User declined plan upgrade."
+}

@@ -1,0 +1,6 @@
+test,statistic,p_value,conclusion
+ANOVA: cholesterol vs cardio,1799.6607856699602,0.0,Bác bỏ H0
+T-test: hai nhóm tuổi,-52.51350890203989,0.0,Bác bỏ H0
+Pearson: weight vs cardio,0.18165956179862533,0.0,Bác bỏ H0
+Chi-square: alco vs cardio,3.696547466479263,0.05452518218322108,Chưa đủ bằng chứng bác bỏ H0
+Chi-square bổ sung: cholesterol,3423.4388976841265,0.0,Bác bỏ H0

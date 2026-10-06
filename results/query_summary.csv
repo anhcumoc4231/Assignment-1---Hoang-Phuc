@@ -1,0 +1,14 @@
+Mã,Yêu cầu,Kết quả local
+Q01,Tổng số hồ sơ,"70,000"
+Q02,Số người mắc bệnh,"34,979"
+Q03,Số người theo giới tính,"Mã 1: 45,530; Mã 2: 24,470"
+Q04,10 người có AP_HI cao nhất,8/10 hồ sơ mắc bệnh (80.00%)
+Q05,10 người có cân nặng trên trung bình,8/10 hồ sơ mắc bệnh (80.00%)
+Q06,10 người có đường huyết cao,5/10 hồ sơ mắc bệnh (50.00%)
+Q07,10 người lớn tuổi nhất,9/10 hồ sơ mắc bệnh (90.00%)
+Q08,10 người có cholesterol mức 3,9/10 hồ sơ mắc bệnh (90.00%)
+Q09,10 người hút thuốc,7/10 hồ sơ mắc bệnh (70.00%)
+Q10,10 người có vận động,3/10 hồ sơ mắc bệnh (30.00%)
+Q11,10 người có AP_LO thấp nhất,5/10 hồ sơ mắc bệnh (50.00%)
+Q12,10 người uống rượu,5/10 hồ sơ mắc bệnh (50.00%)
+Q13,Xem dữ liệu và đổi tuổi sang năm,4/10 hồ sơ mắc bệnh (40.00%)

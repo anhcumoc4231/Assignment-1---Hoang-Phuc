@@ -1,0 +1,9 @@
+{
+  "rows": 70000,
+  "columns": 13,
+  "unique_ids": 70000,
+  "missing_values": 0,
+  "duplicate_feature_target_rows": 3208,
+  "disease_cases": 34979,
+  "disease_rate": 0.4997
+}
