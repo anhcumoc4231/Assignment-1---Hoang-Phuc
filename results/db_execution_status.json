@@ -1,4 +1,12 @@
 {
-  "engine": "SQLite local — kiểm chứng SELECT, chưa chạy Db2 Cloud",
-  "cloud_executed": false
+  "engine": "SQLite — cơ sở dữ liệu lưu bằng tệp",
+  "cloud_executed": false,
+  "rows": 70000,
+  "disease_cases": 34979,
+  "queries_executed": 13,
+  "approved_alternative": "SQLite and local notebook execution",
+  "persistent": true,
+  "database_file": "data\\cardio_train.sqlite",
+  "reopen_verified": true,
+  "integrity_check": "ok"
 }

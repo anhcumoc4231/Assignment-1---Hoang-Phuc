@@ -55,5 +55,6 @@
     "seaborn": "0.13.2"
   },
   "github_repository": "https://github.com/anhcumoc4231/ADY201m-Cardio-Assignment",
-  "cloud_blocker": "IBM account setup / Upgrade account not completed; session logged out. User declined plan upgrade."
+  "execution_mode": "local_with_persistent_sqlite",
+  "approved_alternative": "SQLite and local notebook execution; instructor approval reported by student"
 }
